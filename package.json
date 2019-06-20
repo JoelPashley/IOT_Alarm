@@ -1,0 +1,23 @@
+{
+  "name": "iot_alarm",
+  "version": "1.0.0",
+  "description": "A node.js program designed to run on a RPI with GPIO for an alarm, motion sensor (PIR), and self hosted web interface.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoelPashley/IOT_Alarm.git"
+  },
+  "keywords": [
+    "IOT",
+    "RaspberryPi"
+  ],
+  "author": "Joel Pashley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoelPashley/IOT_Alarm/issues"
+  },
+  "homepage": "https://github.com/JoelPashley/IOT_Alarm#readme"
+}
