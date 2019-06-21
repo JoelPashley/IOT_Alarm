@@ -1,8 +1,74 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Alarm</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> 
+        <link rel="stylesheet" type="text/css" href="GUI/main.css">
+        <script type="text/javascript">
+            var socket = io();
+
+            function setCharAt(str,index,chr) {
+                if(index > str.length-1) return str;
+                return str.substr(0,index) + chr + str.substr(index+1);
+            }
+            $(document).ready(function(){
+                $(".pin-button").click(function(){
+                    var text = $(".PINCODE").text();
+                    if(text.substr(0,1) === "#"){
+                        $(".PINCODE").text(setCharAt(text, 0, $(this).text()));
+                        return;
+                    }else if(text.substr(1,1) === "#"){
+                        $(".PINCODE").text(setCharAt(text, 1, $(this).text()));
+                        return;
+                    }else if(text.substr(2,1) === "#"){
+                        $(".PINCODE").text(setCharAt(text, 2, $(this).text()));
+                        return;
+                    }else if(text.substr(3,1) === "#"){
+                        $(".PINCODE").text(setCharAt(text, 3, $(this).text()));
+                    }
+                    if($(".PINCODE").text().substr(3,1) != "#"){
+                        socket.emit("passcode", $(".PINCODE").text());
+                    }
+                });
+            });
+
+            socket.on("passwordRes", function(data){
+                if(data == true){
+                    $(".PINCODE").addClass("SUCCESS");
+                }else{
+                    $(".PINCODE").addClass("FAIL");
+                    window.setTimeout(resetPINPAD, 2500);
+                }
+            });
+
+            function resetPINPAD(){
+                $(".PINCODE").text("####");
+                $(".PINCODE").removeClass("FAIL");
+            }
+        </script>
     </head>
     <body>
-
+        <h1>Alarm Control Panel</h1>
+        <div class="PINPAD">
+            <label class="PINCODE">####</label>
+            <div class="grid-container">
+                <div class="grid-item"><button class="pin-button">1</button></div>
+                <div class="grid-item"><button class="pin-button">2</button></div>
+                <div class="grid-item"><button class="pin-button">3</button></div>
+                <div class="grid-item"><button class="pin-button">4</button></div>
+                <div class="grid-item"><button class="pin-button">5</button></div>
+                <div class="grid-item"><button class="pin-button">6</button></div>
+                <div class="grid-item"><button class="pin-button">7</button></div>
+                <div class="grid-item"><button class="pin-button">8</button></div>
+                <div class="grid-item"><button class="pin-button">9</button></div>
+                <div class="grid-item"><button class="pin-button">#</button></div>
+                <div class="grid-item"><button class="pin-button">0</button></div>
+                <div class="grid-item"><button class="pin-button">*</button></div>
+            </div>
+        </div>
     </body>
 </html>

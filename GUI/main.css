@@ -1,0 +1,52 @@
+body{
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
+
+.PINCODE{
+    font-size: 4em;
+    border: 1px solid black;
+    padding: 20px;
+    width: 5em;
+}
+
+.FAIL{
+    background-color: rgba(255, 0, 0, 0.25);
+}
+
+.SUCCESS{
+    background-color: rgba(0, 255, 0, 0.25);
+}
+
+.grid-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background-color: rgb(133, 137, 141);
+    padding: 10px;
+}
+
+.grid-item{
+    border: 1px solid black;
+    font-size: 3em;
+    text-align: center;
+}
+.grid-item button{
+    background-color: lightgray;
+    border: none;
+    color: black;
+    padding: 20px 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.grid-item button:hover{
+    background-color: rgb(184, 180, 180)
+}
+
+.grid-item button:active{
+    transform: scale(0.90);
+}

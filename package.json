@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/JoelPashley/IOT_Alarm/issues"
   },
-  "homepage": "https://github.com/JoelPashley/IOT_Alarm#readme"
+  "homepage": "https://github.com/JoelPashley/IOT_Alarm#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "socket.io": "^2.2.0",
+    "url": "^0.11.0"
+  }
 }
