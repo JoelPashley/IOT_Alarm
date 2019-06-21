@@ -4,11 +4,19 @@ body{
     text-align: center;
 }
 
+.STATUSBAR{
+    font-size: 2em;
+    border: 1px solid black;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
 .PINCODE{
     font-size: 4em;
     border: 1px solid black;
     padding: 20px;
-    width: 5em;
+    width: 6em;
 }
 
 .FAIL{
@@ -25,6 +33,15 @@ body{
     grid-template-rows: 1fr 1fr 1fr 1fr;
     background-color: rgb(133, 137, 141);
     padding: 10px;
+}
+
+.grid-container2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: rgb(133, 137, 141);
+    padding: 10px;
+    margin-top: 30px;
 }
 
 .grid-item{
@@ -49,4 +66,13 @@ body{
 
 .grid-item button:active{
     transform: scale(0.90);
+}
+
+.disabled:hover{
+    cursor: not-allowed;
+    background-color: lightgray !important;
+}
+
+.disabled:active{
+    transform: none !important;
 }
