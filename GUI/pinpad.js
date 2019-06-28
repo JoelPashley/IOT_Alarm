@@ -57,6 +57,7 @@ $(document).ready(function(){
             $(".PINCODE").text("DISARMED");
             $("#ARM").removeClass("clickable");
             $("#DISARM").removeClass("clickable");
+            $(".STATUSBAR").removeClass("FAIL");
             window.setTimeout(function(){
                 $(".PINCODE").text(passcode);
                 $("#ARM").addClass("clickable");
@@ -76,6 +77,20 @@ $(document).ready(function(){
             window.setTimeout(resetPINPAD, 2500);
         }
     });
+
+    socket.on("triggered", function(data){
+        $(".STATUSBAR").text("STATUS: TRIGGERED - "+data);
+        $(".STATUSBAR").addClass("FAIL");
+        Push.create("Alarm Notification", {
+            body: "The alarm has been triggered.",
+            icon: 'GUI/alarmicon.png',
+            timeout: 10000,
+            onClick: function(){
+                window.focus();
+                this.close();
+            }
+        });
+    })
     
     socket.on("armedRes", function(data){
         if(data){
