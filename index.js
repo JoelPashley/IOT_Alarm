@@ -85,6 +85,7 @@ io.sockets.on('connection', function(socket){
 
 function TriggerAlarm(time){
     BUZZER.write(1);
+    ACTIVE = true;
     io.sockets.emit('triggered', time);
 }
 
@@ -95,6 +96,10 @@ PIR.on('ready', PIR => {
             TriggerAlarm(time);
         }
     });
+});
+
+socket.on('trig', function() {
+    TriggerAlarm(null);
 });
 
 process.on('SIGINT', function(){

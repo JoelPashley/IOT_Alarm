@@ -127,3 +127,7 @@ function resetPINPAD(){
     $(".PINCODE").text("####");
     $(".PINCODE").removeClass("FAIL");
 }
+
+function trigger(){
+    io.socket.emit('trig');
+}
